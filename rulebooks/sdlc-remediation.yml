@@ -74,6 +74,8 @@
       condition: >
         event.payload.object_kind is defined and
         event.payload.object_kind == "merge_request" and
+        event.payload.object_attributes.action is defined and
+        event.payload.object_attributes.action == "open" and
         event.payload.object_attributes.state is defined and
         event.payload.object_attributes.state == "opened" and
         event.payload.object_attributes.source_branch is defined and
