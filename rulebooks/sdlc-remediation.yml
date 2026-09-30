@@ -34,8 +34,9 @@
               # jinja variable 'component'" and no job launches. Coercing `component` to
               # an empty dict first keeps the attribute lookup legal for both shapes.
               artifact_name: "{{ (event.payload.component | default({})).name | default(event.payload.artifact_name | default('')) }}"
+              artifact_group: "{{ (event.payload.component | default({})).group | default(event.payload.artifact_group | default('')) }}"
               artifact_version: "{{ (event.payload.component | default({})).version | default(event.payload.artifact_version | default('')) }}"
-              package_purl: "{{ event.payload.package | default((event.payload.component | default({})).name | default('')) }}"
+              package_purl: "{{ event.payload.package | default('') }}"
               vulnerable_version: "{{ event.payload.vulnerable_version | default('') }}"
               fix_version: "{{ event.payload.fix_version | default((event.payload.component | default({})).version | default('')) }}"
               cve_id: "{{ event.payload.cve_id | default('unknown') }}"
